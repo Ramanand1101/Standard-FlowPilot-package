@@ -1,0 +1,1028 @@
+[
+    {
+        "id": "41e8c927e458c082",
+        "type": "tab",
+        "label": "Flow 6",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "068a2bf5ff2006d4",
+        "type": "http in",
+        "z": "41e8c927e458c082",
+        "name": "Get All Customer",
+        "url": "api/v1/customer",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 120,
+        "wires": [
+            [
+                "7818d79d3603b7d3"
+            ]
+        ]
+    },
+    {
+        "id": "c09e38883e4132be",
+        "type": "http request",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 650,
+        "y": 120,
+        "wires": [
+            [
+                "cead5b15af567282"
+            ]
+        ]
+    },
+    {
+        "id": "950841f19e0d6775",
+        "type": "debug",
+        "z": "41e8c927e458c082",
+        "name": "debug 257",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1210,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "84e27abb7127a0e1",
+        "type": "http response",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1230,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "7818d79d3603b7d3",
+        "type": "function",
+        "z": "41e8c927e458c082",
+        "name": "function 200",
+        "func": "// Retrieve environment variables\nconst apiURL = env.get(\"host\");\nconst project = env.get(\"project-key\");\n\n// Extract payload from the incoming message\nconst payload = msg.payload;\n\n// Extract the token from the request headers\nconst token = msg.req.headers.authorization;\nconsole.log(token); // Output the token to the console\n\n// Set up headers for the outgoing HTTP request\nmsg.headers = {\n    \"Content-Type\": \"application/json\",\n    \"Authorization\": `Bearer ${token}`, // Assuming the token follows the Bearer token format\n};\n\n// Set up the URL for the outgoing HTTP request\nmsg.url = `${apiURL}/${project}/customers`;\n\n// Set the payload for the outgoing HTTP request\nmsg.payload = payload;\n\n// Return the modified message for further processing\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 120,
+        "wires": [
+            [
+                "c09e38883e4132be"
+            ]
+        ]
+    },
+    {
+        "id": "59b0e65eebc68444",
+        "type": "comment",
+        "z": "41e8c927e458c082",
+        "name": "Get all Customer",
+        "info": "",
+        "x": 240,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "247cc1fcac965446",
+        "type": "function",
+        "z": "41e8c927e458c082",
+        "name": "function 201",
+        "func": "const data=msg.payload\nmsg.payload={\n    msg:\"Customer data fetch Successfully\",\n    statusCode:msg.statusCode,\n    data:data\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1030,
+        "y": 100,
+        "wires": [
+            [
+                "950841f19e0d6775",
+                "84e27abb7127a0e1"
+            ]
+        ]
+    },
+    {
+        "id": "3578eba41d506b80",
+        "type": "http in",
+        "z": "41e8c927e458c082",
+        "name": "Get customerInfo",
+        "url": "api/v1/me",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 200,
+        "y": 320,
+        "wires": [
+            [
+                "35803837a8c2cce6"
+            ]
+        ]
+    },
+    {
+        "id": "11edb5e7348782dc",
+        "type": "http request",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 630,
+        "y": 320,
+        "wires": [
+            [
+                "e82e79fdd03131ba"
+            ]
+        ]
+    },
+    {
+        "id": "1aa840a8a55c6d98",
+        "type": "debug",
+        "z": "41e8c927e458c082",
+        "name": "debug 258",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1250,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "bbe60907ad4f8fa6",
+        "type": "http response",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1250,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "35803837a8c2cce6",
+        "type": "function",
+        "z": "41e8c927e458c082",
+        "name": "function 202",
+        "func": "// Retrieve environment variables\nconst apiURL = env.get(\"host\");\nconst project = env.get(\"project-key\");\n\n// Extract payload from the incoming message\nconst payload = msg.payload;\n\n// Extract the token from the request headers\nconst token = msg.req.headers.authorization;\nconsole.log(token); // Output the token to the console\n\n// Set up headers for the outgoing HTTP request\nmsg.headers = {\n    \"Content-Type\": \"application/json\",\n    \"Authorization\": `Bearer ${token}`, // Assuming the token follows the Bearer token format\n};\n\n// Set up the URL for the outgoing HTTP request\nmsg.url = `${apiURL}/${project}/me`;\n\n// Set the payload for the outgoing HTTP request\nmsg.payload = payload;\n\n// Return the modified message for further processing\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 320,
+        "wires": [
+            [
+                "11edb5e7348782dc"
+            ]
+        ]
+    },
+    {
+        "id": "b894782306ec9b64",
+        "type": "comment",
+        "z": "41e8c927e458c082",
+        "name": "Get customer info",
+        "info": "",
+        "x": 250,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "b131ca6ded253aaa",
+        "type": "function",
+        "z": "41e8c927e458c082",
+        "name": "function 203",
+        "func": "const data=msg.payload\nmsg.payload={\n    msg:\"Customer Info fetch Successfully\",\n    statusCode:msg.statusCode,\n    data:data\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1010,
+        "y": 320,
+        "wires": [
+            [
+                "1aa840a8a55c6d98",
+                "bbe60907ad4f8fa6"
+            ]
+        ]
+    },
+    {
+        "id": "ed75f7fdcb3eb5ac",
+        "type": "http in",
+        "z": "41e8c927e458c082",
+        "name": "Get All categories",
+        "url": "api/v1/categories",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 200,
+        "y": 520,
+        "wires": [
+            [
+                "dbd5a15b7f1abcde"
+            ]
+        ]
+    },
+    {
+        "id": "c4a8aa391ae04036",
+        "type": "http request",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 630,
+        "y": 520,
+        "wires": [
+            [
+                "6902fad24ccd051f"
+            ]
+        ]
+    },
+    {
+        "id": "044d0e2aaf99c874",
+        "type": "debug",
+        "z": "41e8c927e458c082",
+        "name": "debug 259",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1250,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "152f56fda9a4cbb5",
+        "type": "http response",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1270,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "dbd5a15b7f1abcde",
+        "type": "function",
+        "z": "41e8c927e458c082",
+        "name": "function 204",
+        "func": "// Retrieve environment variables\nconst apiURL = env.get(\"host\");\nconst project = env.get(\"project-key\");\n\n// Extract payload from the incoming message\nconst payload = msg.payload;\n\n// Extract the token from the request headers\nconst token = msg.req.headers.authorization;\nconsole.log(token); // Output the token to the console\n\n// Set up headers for the outgoing HTTP request\nmsg.headers = {\n    \"Content-Type\": \"application/json\",\n    \"Authorization\": `Bearer ${token}`, // Assuming the token follows the Bearer token format\n};\n\n// Set up the URL for the outgoing HTTP request\nmsg.url = `${apiURL}/${project}/categories`;\n\n// Set the payload for the outgoing HTTP request\nmsg.payload = payload;\n\n// Return the modified message for further processing\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 520,
+        "wires": [
+            [
+                "c4a8aa391ae04036"
+            ]
+        ]
+    },
+    {
+        "id": "bd10c887b787917f",
+        "type": "comment",
+        "z": "41e8c927e458c082",
+        "name": "Get all Categories",
+        "info": "",
+        "x": 230,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "331edfe6f53fb3ec",
+        "type": "function",
+        "z": "41e8c927e458c082",
+        "name": "function 205",
+        "func": "const data=msg.payload\nmsg.payload={\n    msg:\"All Categories fetch Successfully\",\n    statusCode:msg.statusCode,\n    data:data\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1050,
+        "y": 520,
+        "wires": [
+            [
+                "044d0e2aaf99c874",
+                "152f56fda9a4cbb5"
+            ]
+        ]
+    },
+    {
+        "id": "cead5b15af567282",
+        "type": "switch",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "200",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "200",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 830,
+        "y": 120,
+        "wires": [
+            [
+                "247cc1fcac965446"
+            ],
+            [
+                "1372a2c0f3b5c4bc",
+                "950841f19e0d6775"
+            ]
+        ]
+    },
+    {
+        "id": "1372a2c0f3b5c4bc",
+        "type": "http response",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1150,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "e82e79fdd03131ba",
+        "type": "switch",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "200",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "200",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 810,
+        "y": 320,
+        "wires": [
+            [
+                "b131ca6ded253aaa"
+            ],
+            [
+                "1aa840a8a55c6d98",
+                "f0334eb549346553"
+            ]
+        ]
+    },
+    {
+        "id": "f0334eb549346553",
+        "type": "http response",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1060,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "6902fad24ccd051f",
+        "type": "switch",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "200",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "200",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 810,
+        "y": 520,
+        "wires": [
+            [
+                "331edfe6f53fb3ec"
+            ],
+            [
+                "044d0e2aaf99c874",
+                "1fcffee064f6357e"
+            ]
+        ]
+    },
+    {
+        "id": "1fcffee064f6357e",
+        "type": "http response",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1070,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "762874a19f6682c5",
+        "type": "http in",
+        "z": "41e8c927e458c082",
+        "name": "Get All products",
+        "url": "api/v1/products",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 200,
+        "y": 820,
+        "wires": [
+            [
+                "0783c43ab7813f5a"
+            ]
+        ]
+    },
+    {
+        "id": "f799168be4309b9e",
+        "type": "http request",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 630,
+        "y": 820,
+        "wires": [
+            [
+                "07cbcd2ef8bc4695"
+            ]
+        ]
+    },
+    {
+        "id": "e6460c11aa3c5df4",
+        "type": "debug",
+        "z": "41e8c927e458c082",
+        "name": "debug 260",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1250,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "096ff94db6da9430",
+        "type": "http response",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1270,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "0783c43ab7813f5a",
+        "type": "function",
+        "z": "41e8c927e458c082",
+        "name": "function 206",
+        "func": "// Retrieve environment variables\nconst apiURL = env.get(\"host\");\nconst project = env.get(\"project-key\");\n\n// Extract payload from the incoming message\nconst payload = msg.payload;\n\n// Extract the token from the request headers\nconst token = msg.req.headers.authorization;\nconsole.log(token); // Output the token to the console\n\n// Set up headers for the outgoing HTTP request\nmsg.headers = {\n    \"Content-Type\": \"application/json\",\n    \"Authorization\": `Bearer ${token}`, // Assuming the token follows the Bearer token format\n};\n\n// Set up the URL for the outgoing HTTP request\nmsg.url = `${apiURL}/${project}/products`;\n\n// Set the payload for the outgoing HTTP request\nmsg.payload = payload;\n\n// Return the modified message for further processing\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 820,
+        "wires": [
+            [
+                "f799168be4309b9e"
+            ]
+        ]
+    },
+    {
+        "id": "7fe82ac1c486eaa5",
+        "type": "comment",
+        "z": "41e8c927e458c082",
+        "name": "Get all Products",
+        "info": "",
+        "x": 220,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "94b14080a20d7a61",
+        "type": "function",
+        "z": "41e8c927e458c082",
+        "name": "function 207",
+        "func": "const data=msg.payload\nmsg.payload={\n    msg:\"All products fetch Successfully\",\n    statusCode:msg.statusCode,\n    data:data\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1050,
+        "y": 820,
+        "wires": [
+            [
+                "e6460c11aa3c5df4",
+                "096ff94db6da9430"
+            ]
+        ]
+    },
+    {
+        "id": "07cbcd2ef8bc4695",
+        "type": "switch",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "200",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "200",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 810,
+        "y": 820,
+        "wires": [
+            [
+                "94b14080a20d7a61"
+            ],
+            [
+                "e6460c11aa3c5df4",
+                "4337dcf405d8a4b5"
+            ]
+        ]
+    },
+    {
+        "id": "4337dcf405d8a4b5",
+        "type": "http response",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1070,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "bf3e801606a31939",
+        "type": "http in",
+        "z": "41e8c927e458c082",
+        "name": "Get Cart Data",
+        "url": "api/v1/me/cart",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 1060,
+        "wires": [
+            [
+                "3564ba9e8b982285"
+            ]
+        ]
+    },
+    {
+        "id": "361dfc76e762ef3c",
+        "type": "http request",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 630,
+        "y": 1060,
+        "wires": [
+            [
+                "35af14629e9dcc4e"
+            ]
+        ]
+    },
+    {
+        "id": "68d214072707e4f3",
+        "type": "debug",
+        "z": "41e8c927e458c082",
+        "name": "debug 261",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1250,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "10089949ef216162",
+        "type": "http response",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1270,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "3564ba9e8b982285",
+        "type": "function",
+        "z": "41e8c927e458c082",
+        "name": "function 208",
+        "func": "// Retrieve environment variables\nconst apiURL = env.get(\"host\");\nconst project = env.get(\"project-key\");\n\n// Extract payload from the incoming message\nconst payload = msg.payload;\n\n// Extract the token from the request headers\nconst token = msg.req.headers.authorization;\nconsole.log(token); // Output the token to the console\n\n// Set up headers for the outgoing HTTP request\nmsg.headers = {\n    \"Content-Type\": \"application/json\",\n    \"Authorization\": `Bearer ${token}`, // Assuming the token follows the Bearer token format\n};\n\n// Set up the URL for the outgoing HTTP request\nmsg.url = `${apiURL}/${project}/me/carts`;\n\n// Set the payload for the outgoing HTTP request\nmsg.payload = payload;\n\n// Return the modified message for further processing\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 1060,
+        "wires": [
+            [
+                "361dfc76e762ef3c"
+            ]
+        ]
+    },
+    {
+        "id": "2e4da373b430b084",
+        "type": "comment",
+        "z": "41e8c927e458c082",
+        "name": "Get Customer Cart",
+        "info": "",
+        "x": 230,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "079386a973e2d874",
+        "type": "function",
+        "z": "41e8c927e458c082",
+        "name": "function 209",
+        "func": "const data=msg.payload\nmsg.payload={\n    msg:\"Cutomer Cart fetch Successfully\",\n    statusCode:msg.statusCode,\n    data:data\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1050,
+        "y": 1060,
+        "wires": [
+            [
+                "68d214072707e4f3",
+                "10089949ef216162"
+            ]
+        ]
+    },
+    {
+        "id": "35af14629e9dcc4e",
+        "type": "switch",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "200",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "200",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 810,
+        "y": 1060,
+        "wires": [
+            [
+                "079386a973e2d874"
+            ],
+            [
+                "68d214072707e4f3",
+                "946a822855a26ef2"
+            ]
+        ]
+    },
+    {
+        "id": "946a822855a26ef2",
+        "type": "http response",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1070,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "502d68c05d7dafdc",
+        "type": "comment",
+        "z": "41e8c927e458c082",
+        "name": "Nikhil Task -2",
+        "info": "",
+        "x": 270,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "b99d32c0f69f8663",
+        "type": "inject",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 1320,
+        "wires": [
+            [
+                "ef0b631c34d84a1d"
+            ]
+        ]
+    },
+    {
+        "id": "ef0b631c34d84a1d",
+        "type": "http request",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://auth.us-east-2.aws.commercetools.com/oauth/token?grant_type=client_credentials",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "basic",
+        "senderr": false,
+        "headers": [],
+        "x": 420,
+        "y": 1300,
+        "wires": [
+            [
+                "bb67799e15f92cb3",
+                "3176948b3e23f260"
+            ]
+        ]
+    },
+    {
+        "id": "bb67799e15f92cb3",
+        "type": "debug",
+        "z": "41e8c927e458c082",
+        "name": "debug 262",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "3176948b3e23f260",
+        "type": "http response",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 620,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "ab2ca41650c52bb0",
+        "type": "http in",
+        "z": "41e8c927e458c082",
+        "name": "Obtain Access Token",
+        "url": "/api/v1/oauth",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 210,
+        "y": 1480,
+        "wires": [
+            [
+                "85b635eebc5333a9",
+                "4442dc4b2e435d2c"
+            ]
+        ]
+    },
+    {
+        "id": "85b635eebc5333a9",
+        "type": "function",
+        "z": "41e8c927e458c082",
+        "name": "function 210",
+        "func": "const apiURL=env.get(\"host\")\nconst client_id=env.get(\"client_id\")\nconst client_secret=env.get(\"client_secret\")\nconst payload = msg.payload;\n\nconst authString = `${client_id}:${client_secret}`;\nconst base64AuthString = Buffer.from(authString).toString('base64');\nconsole.log(base64AuthString)\n\nconst query=msg.req.query\n\nmsg.url = `${apiURL}/oauth/token`;\n// var basicAuth = msg.req.headers.authorization;\n\n\n// console.log(basicAuth)\n\n// Set the message headers\nmsg.headers = {\n    \"Content-Type\": \"application/x-www-form-urlencoded\",\n    \"Authorization\": `Basic ${base64AuthString}`\n};\n\nmsg.payload=\"grant_type=client_credentials\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 1480,
+        "wires": [
+            [
+                "2d1947534624195f"
+            ]
+        ]
+    },
+    {
+        "id": "2d1947534624195f",
+        "type": "http request",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 670,
+        "y": 1480,
+        "wires": [
+            [
+                "83c0b5bae97ad03e",
+                "1ad330f723343510"
+            ]
+        ]
+    },
+    {
+        "id": "83c0b5bae97ad03e",
+        "type": "debug",
+        "z": "41e8c927e458c082",
+        "name": "debug 263",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "1ad330f723343510",
+        "type": "http response",
+        "z": "41e8c927e458c082",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 940,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "4442dc4b2e435d2c",
+        "type": "debug",
+        "z": "41e8c927e458c082",
+        "name": "debug 264",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 1420,
+        "wires": []
+    }
+]

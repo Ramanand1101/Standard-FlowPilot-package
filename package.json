@@ -1,0 +1,17 @@
+{
+  "name": "node-red-standard-template",
+  "version": "1.0.0",
+  "description": "This is a composer Toolbar",
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "node-red": {
+    "plugins": {
+      "composerTool": "composerTool.html"
+    }
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "jsdom": "^24.1.0"
+  }
+}

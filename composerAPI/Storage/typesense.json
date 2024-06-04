@@ -1,0 +1,57 @@
+[
+    {
+        "id": "4b610044ec990d86",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "eec777d31b830066",
+        "type": "http in",
+        "z": "4b610044ec990d86",
+        "name": "",
+        "url": "/web",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 100,
+        "wires": [
+            [
+                "19d0e084ea0bc81b"
+            ]
+        ]
+    },
+    {
+        "id": "15c744518051d368",
+        "type": "http response",
+        "z": "4b610044ec990d86",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 530,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "19d0e084ea0bc81b",
+        "type": "template",
+        "z": "4b610044ec990d86",
+        "name": "Basic App",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html>\n<body>\n\n<h1>My First Heading</h1>\n<p>My first paragraph.</p>\n\n</body>\n</html>",
+        "output": "str",
+        "x": 360,
+        "y": 80,
+        "wires": [
+            [
+                "15c744518051d368"
+            ]
+        ]
+    }
+]

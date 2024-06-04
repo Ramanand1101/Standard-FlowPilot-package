@@ -1,0 +1,1275 @@
+[
+    {
+        "id": "8c75a5205b53450b",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "74100952cdb0e577",
+        "type": "http in",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "url": "user/gett",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 540,
+        "wires": [
+            [
+                "2655a32dffb53172"
+            ]
+        ]
+    },
+    {
+        "id": "6f857f74397e2e12",
+        "type": "http response",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 800,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "e79bc3b5f6e30f0e",
+        "type": "mongodb3 in",
+        "z": "8c75a5205b53450b",
+        "service": "_ext_",
+        "configNode": "e905b92535d6f89e",
+        "name": "find all",
+        "collection": "person",
+        "operation": "find.toArray",
+        "x": 570,
+        "y": 540,
+        "wires": [
+            [
+                "6f857f74397e2e12",
+                "a61a56157c543a09"
+            ]
+        ]
+    },
+    {
+        "id": "2655a32dffb53172",
+        "type": "function",
+        "z": "8c75a5205b53450b",
+        "name": "function 1",
+        "func": " msg.payload=[{}]\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 540,
+        "wires": [
+            [
+                "e79bc3b5f6e30f0e"
+            ]
+        ]
+    },
+    {
+        "id": "a61a56157c543a09",
+        "type": "debug",
+        "z": "8c75a5205b53450b",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "55d46c40820a2be6",
+        "type": "http in",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "url": "users2",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 40,
+        "wires": [
+            [
+                "4c2643bef13cca83"
+            ]
+        ]
+    },
+    {
+        "id": "8ca3ce6927f8bb7c",
+        "type": "http response",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 800,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "e2ee1a80028c7c3f",
+        "type": "mongodb3 in",
+        "z": "8c75a5205b53450b",
+        "service": "_ext_",
+        "configNode": "e905b92535d6f89e",
+        "name": "find all",
+        "collection": "person",
+        "operation": "find.toArray",
+        "x": 570,
+        "y": 40,
+        "wires": [
+            [
+                "8ca3ce6927f8bb7c",
+                "07ce970d0c5fd6cc"
+            ]
+        ]
+    },
+    {
+        "id": "4c2643bef13cca83",
+        "type": "function",
+        "z": "8c75a5205b53450b",
+        "name": "function 2",
+        "func": "; // Assuming you've set ObjectID globally\nmsg.payload = { age:22 };\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 40,
+        "wires": [
+            [
+                "e2ee1a80028c7c3f"
+            ]
+        ]
+    },
+    {
+        "id": "07ce970d0c5fd6cc",
+        "type": "debug",
+        "z": "8c75a5205b53450b",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "1ea2be126a5b7f51",
+        "type": "http in",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "url": "users/post",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 340,
+        "wires": [
+            [
+                "422cc286c0d61744"
+            ]
+        ]
+    },
+    {
+        "id": "cedfee89582146fd",
+        "type": "http response",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 800,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "69aaf40980dddfae",
+        "type": "mongodb3 in",
+        "z": "8c75a5205b53450b",
+        "service": "_ext_",
+        "configNode": "e905b92535d6f89e",
+        "name": "find all",
+        "collection": "person",
+        "operation": "insertOne",
+        "x": 570,
+        "y": 340,
+        "wires": [
+            [
+                "cedfee89582146fd",
+                "faa27cac4f0f69bb"
+            ]
+        ]
+    },
+    {
+        "id": "422cc286c0d61744",
+        "type": "function",
+        "z": "8c75a5205b53450b",
+        "name": "function 3",
+        "func": "\nmsg.body=msg.req.body\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 340,
+        "wires": [
+            [
+                "69aaf40980dddfae"
+            ]
+        ]
+    },
+    {
+        "id": "faa27cac4f0f69bb",
+        "type": "debug",
+        "z": "8c75a5205b53450b",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "0d28fe63792b7965",
+        "type": "http in",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "url": "test/:id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 1540,
+        "wires": [
+            [
+                "6f6fa658551ac440",
+                "d2cb39668e67023e"
+            ]
+        ]
+    },
+    {
+        "id": "6af3aecfbcaad4f1",
+        "type": "template",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\"_id\":  \"{{req.params.id}}\"}",
+        "output": "json",
+        "x": 340,
+        "y": 1500,
+        "wires": [
+            [
+                "e5444575d1a3c4c8"
+            ]
+        ]
+    },
+    {
+        "id": "6f6fa658551ac440",
+        "type": "debug",
+        "z": "8c75a5205b53450b",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 1580,
+        "wires": []
+    },
+    {
+        "id": "e5444575d1a3c4c8",
+        "type": "http response",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 560,
+        "y": 1520,
+        "wires": []
+    },
+    {
+        "id": "d2cb39668e67023e",
+        "type": "function",
+        "z": "8c75a5205b53450b",
+        "name": "function 4",
+        "func": "msg.payload={\"msg\":msg.req.params.id}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 1540,
+        "wires": [
+            [
+                "e5444575d1a3c4c8"
+            ]
+        ]
+    },
+    {
+        "id": "e0d010c5da7a426b",
+        "type": "http response",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "statusCode": "201",
+        "headers": {},
+        "x": 560,
+        "y": 1700,
+        "wires": []
+    },
+    {
+        "id": "1c7dad74a7374de8",
+        "type": "http in",
+        "z": "8c75a5205b53450b",
+        "name": "Post",
+        "url": "test",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 1720,
+        "wires": [
+            [
+                "a0ac3e1359534668",
+                "c9cd7dfe9180066b"
+            ]
+        ]
+    },
+    {
+        "id": "a0ac3e1359534668",
+        "type": "function",
+        "z": "8c75a5205b53450b",
+        "name": "function 5",
+        "func": "msg.payload={\n    \"body\":msg.req.body\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 1720,
+        "wires": [
+            [
+                "e0d010c5da7a426b"
+            ]
+        ]
+    },
+    {
+        "id": "c9cd7dfe9180066b",
+        "type": "debug",
+        "z": "8c75a5205b53450b",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 1760,
+        "wires": []
+    },
+    {
+        "id": "da48b112e02d494e",
+        "type": "template",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\"body\": \"{{req.body}}\"} ",
+        "output": "json",
+        "x": 340,
+        "y": 1680,
+        "wires": [
+            [
+                "e0d010c5da7a426b"
+            ]
+        ]
+    },
+    {
+        "id": "e5b29938b1cf1c19",
+        "type": "http response",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 560,
+        "y": 1900,
+        "wires": []
+    },
+    {
+        "id": "72cd708c781c16bf",
+        "type": "http in",
+        "z": "8c75a5205b53450b",
+        "name": "Put",
+        "url": "test/:id",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 1920,
+        "wires": [
+            [
+                "4eb85bf7d3a7fc7d",
+                "dd3aa74ba1013f32"
+            ]
+        ]
+    },
+    {
+        "id": "dd3aa74ba1013f32",
+        "type": "function",
+        "z": "8c75a5205b53450b",
+        "name": "function 6",
+        "func": "msg.payload={\n    \"userid\":msg.req.params.id,\n    \"body\":msg.req.body\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 1920,
+        "wires": [
+            [
+                "e5b29938b1cf1c19"
+            ]
+        ]
+    },
+    {
+        "id": "4eb85bf7d3a7fc7d",
+        "type": "debug",
+        "z": "8c75a5205b53450b",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 1960,
+        "wires": []
+    },
+    {
+        "id": "18d5b1081ed7356c",
+        "type": "template",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"userId\":\"{{req.params.id}}\",\n    \"body\": \"{{req.body}}\"\n} ",
+        "output": "json",
+        "x": 340,
+        "y": 1880,
+        "wires": [
+            [
+                "e5b29938b1cf1c19"
+            ]
+        ]
+    },
+    {
+        "id": "655027a2f34ccbce",
+        "type": "http in",
+        "z": "8c75a5205b53450b",
+        "name": "Delete",
+        "url": "test/:id",
+        "method": "delete",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 2100,
+        "wires": [
+            [
+                "297e9d171dc4509e",
+                "9e2c30c53e1a2308"
+            ]
+        ]
+    },
+    {
+        "id": "da7bfac8480ad25e",
+        "type": "template",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\"_id\":  \"data deleted by id {{req.params.id}}\"}",
+        "output": "json",
+        "x": 340,
+        "y": 2060,
+        "wires": [
+            [
+                "7b4b5ff7f6e83ee8"
+            ]
+        ]
+    },
+    {
+        "id": "297e9d171dc4509e",
+        "type": "debug",
+        "z": "8c75a5205b53450b",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 2140,
+        "wires": []
+    },
+    {
+        "id": "7b4b5ff7f6e83ee8",
+        "type": "http response",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 560,
+        "y": 2080,
+        "wires": []
+    },
+    {
+        "id": "9e2c30c53e1a2308",
+        "type": "function",
+        "z": "8c75a5205b53450b",
+        "name": "function 7",
+        "func": "msg.payload={\"msg\":`deletd data by id ${msg.req.params.id}`}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 2100,
+        "wires": [
+            [
+                "7b4b5ff7f6e83ee8"
+            ]
+        ]
+    },
+    {
+        "id": "c197d989ba72cad3",
+        "type": "http response",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 800,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "01868c133b7c5b40",
+        "type": "debug",
+        "z": "8c75a5205b53450b",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "a4d1a8b4a74cc026",
+        "type": "http in",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "url": "users/data",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 180,
+        "wires": [
+            [
+                "aa3890fbcb3d7102"
+            ]
+        ]
+    },
+    {
+        "id": "c12e1f56a6431a8d",
+        "type": "mongodb3 in",
+        "z": "8c75a5205b53450b",
+        "service": "_ext_",
+        "configNode": "e905b92535d6f89e",
+        "name": "find all",
+        "collection": "person",
+        "operation": "findOne",
+        "x": 570,
+        "y": 180,
+        "wires": [
+            [
+                "c197d989ba72cad3",
+                "01868c133b7c5b40"
+            ]
+        ]
+    },
+    {
+        "id": "aa3890fbcb3d7102",
+        "type": "function",
+        "z": "8c75a5205b53450b",
+        "name": "function 8",
+        "func": "; // Assuming you've set ObjectID globally\nmsg.payload = [{ age: Number(msg.req.query.age)}]\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 180,
+        "wires": [
+            [
+                "c12e1f56a6431a8d"
+            ]
+        ]
+    },
+    {
+        "id": "557564465eb2c30a",
+        "type": "http response",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 800,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "dfab780ced54e5d4",
+        "type": "debug",
+        "z": "8c75a5205b53450b",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "6ef8cc39eae0c077",
+        "type": "http in",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "url": "users/data1/:_id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 260,
+        "wires": [
+            [
+                "eee77592b5e304e9"
+            ]
+        ]
+    },
+    {
+        "id": "796ea7eaab48e255",
+        "type": "mongodb3 in",
+        "z": "8c75a5205b53450b",
+        "service": "_ext_",
+        "configNode": "e905b92535d6f89e",
+        "name": "find all",
+        "collection": "person",
+        "operation": "findOne",
+        "x": 570,
+        "y": 260,
+        "wires": [
+            [
+                "557564465eb2c30a",
+                "dfab780ced54e5d4"
+            ]
+        ]
+    },
+    {
+        "id": "eee77592b5e304e9",
+        "type": "function",
+        "z": "8c75a5205b53450b",
+        "name": "function 9",
+        "func": "; // Assuming you've set ObjectID globally\n\nmsg.payload = [{ \"_id\": msg.req.params._id }]\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 260,
+        "wires": [
+            [
+                "796ea7eaab48e255"
+            ]
+        ]
+    },
+    {
+        "id": "77e997ee68fcbe0d",
+        "type": "comment",
+        "z": "8c75a5205b53450b",
+        "name": "Get by query age",
+        "info": "",
+        "x": 160,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "9a71b7ca13787b29",
+        "type": "http in",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "url": "user/postt",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 880,
+        "wires": [
+            [
+                "b9e193827f967cfd"
+            ]
+        ]
+    },
+    {
+        "id": "b9e193827f967cfd",
+        "type": "function",
+        "z": "8c75a5205b53450b",
+        "name": "function 10",
+        "func": "msg.payload=[{email:msg.req.body.email}]\nmsg.body=[msg.req.body]\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 880,
+        "wires": [
+            [
+                "24261383380e079d"
+            ]
+        ]
+    },
+    {
+        "id": "24261383380e079d",
+        "type": "mongodb3 in",
+        "z": "8c75a5205b53450b",
+        "service": "_ext_",
+        "configNode": "e905b92535d6f89e",
+        "name": "find all",
+        "collection": "person",
+        "operation": "findOne",
+        "x": 490,
+        "y": 880,
+        "wires": [
+            [
+                "fee943bd30af8a5a",
+                "f255a89271892ae5"
+            ]
+        ]
+    },
+    {
+        "id": "fee943bd30af8a5a",
+        "type": "switch",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "hask",
+                "v": "email",
+                "vt": "str"
+            },
+            {
+                "t": "empty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 630,
+        "y": 880,
+        "wires": [
+            [
+                "0bfd3c55d175e256"
+            ],
+            [
+                "beeb11d5692400a7"
+            ]
+        ]
+    },
+    {
+        "id": "0bfd3c55d175e256",
+        "type": "http response",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "statusCode": "409",
+        "headers": {},
+        "x": 780,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "beeb11d5692400a7",
+        "type": "function",
+        "z": "8c75a5205b53450b",
+        "name": "function 11",
+        "func": "\n    delete msg.payload\n    msg.payload = msg.body\n    delete msg.body\n  \nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 900,
+        "wires": [
+            [
+                "a10b7001bdb0a034"
+            ]
+        ]
+    },
+    {
+        "id": "a10b7001bdb0a034",
+        "type": "mongodb3 in",
+        "z": "8c75a5205b53450b",
+        "service": "_ext_",
+        "configNode": "e905b92535d6f89e",
+        "name": "insertone",
+        "collection": "person",
+        "operation": "insertOne",
+        "x": 960,
+        "y": 880,
+        "wires": [
+            [
+                "e61fd710b77ff854",
+                "42ae555c2a20d3a5"
+            ]
+        ]
+    },
+    {
+        "id": "e61fd710b77ff854",
+        "type": "http response",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "statusCode": "201",
+        "headers": {},
+        "x": 1120,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "42ae555c2a20d3a5",
+        "type": "debug",
+        "z": "8c75a5205b53450b",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1120,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "4414926e7621219f",
+        "type": "http in",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "url": "user/putt/:email",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 1060,
+        "wires": [
+            [
+                "bfb016dbb62a9244"
+            ]
+        ]
+    },
+    {
+        "id": "bfb016dbb62a9244",
+        "type": "function",
+        "z": "8c75a5205b53450b",
+        "name": "function 12",
+        "func": "msg.payload=[{email:msg.req.params.email},{$set:msg.req.body}]\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 1060,
+        "wires": [
+            [
+                "be14fbb1cb89d7db"
+            ]
+        ]
+    },
+    {
+        "id": "be14fbb1cb89d7db",
+        "type": "mongodb3 in",
+        "z": "8c75a5205b53450b",
+        "service": "_ext_",
+        "configNode": "e905b92535d6f89e",
+        "name": "updateone",
+        "collection": "person",
+        "operation": "updateOne",
+        "x": 540,
+        "y": 1060,
+        "wires": [
+            [
+                "31e0ac8d1f917009",
+                "62b19b93eb71491e"
+            ]
+        ]
+    },
+    {
+        "id": "31e0ac8d1f917009",
+        "type": "http response",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 760,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "62b19b93eb71491e",
+        "type": "debug",
+        "z": "8c75a5205b53450b",
+        "name": "debug 13",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "80dcdc8015dc74f9",
+        "type": "http in",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "url": "user/putt/:email",
+        "method": "delete",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 1180,
+        "wires": [
+            [
+                "1e16dc7f58a13582"
+            ]
+        ]
+    },
+    {
+        "id": "1e16dc7f58a13582",
+        "type": "function",
+        "z": "8c75a5205b53450b",
+        "name": "function 13",
+        "func": "msg.payload=[{email:msg.req.params.email}]\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 1180,
+        "wires": [
+            [
+                "e77432ef758d65b0"
+            ]
+        ]
+    },
+    {
+        "id": "e77432ef758d65b0",
+        "type": "mongodb3 in",
+        "z": "8c75a5205b53450b",
+        "service": "_ext_",
+        "configNode": "e905b92535d6f89e",
+        "name": "Deleteone",
+        "collection": "person",
+        "operation": "deleteOne",
+        "x": 540,
+        "y": 1180,
+        "wires": [
+            [
+                "3bb5e41374c0175b",
+                "f97052131f2b4bed"
+            ]
+        ]
+    },
+    {
+        "id": "3bb5e41374c0175b",
+        "type": "http response",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 760,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "f97052131f2b4bed",
+        "type": "debug",
+        "z": "8c75a5205b53450b",
+        "name": "debug 14",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "126eae3199f3f2a4",
+        "type": "comment",
+        "z": "8c75a5205b53450b",
+        "name": "# Normal http request,response,template,statuscode",
+        "info": "# Normal http request,response,template,statuscode",
+        "x": 230,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "0543b95f0dc51170",
+        "type": "comment",
+        "z": "8c75a5205b53450b",
+        "name": "DELETE",
+        "info": "",
+        "x": 120,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "d95958c022586ae5",
+        "type": "comment",
+        "z": "8c75a5205b53450b",
+        "name": "UPDATE",
+        "info": "",
+        "x": 120,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "46b92992e6502335",
+        "type": "comment",
+        "z": "8c75a5205b53450b",
+        "name": "POST",
+        "info": "",
+        "x": 110,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "0d5aba7210b24e7d",
+        "type": "comment",
+        "z": "8c75a5205b53450b",
+        "name": "GET",
+        "info": "",
+        "x": 110,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "2a75443f4d74ed05",
+        "type": "http response",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 800,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "c7467ad0754e1c5d",
+        "type": "debug",
+        "z": "8c75a5205b53450b",
+        "name": "debug 15",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "52bfa827d0d9d42d",
+        "type": "http in",
+        "z": "8c75a5205b53450b",
+        "name": "",
+        "url": "user/gett/:email",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 640,
+        "wires": [
+            [
+                "b288189398cfdd46"
+            ]
+        ]
+    },
+    {
+        "id": "3b1f0316a6a3f92a",
+        "type": "mongodb3 in",
+        "z": "8c75a5205b53450b",
+        "service": "_ext_",
+        "configNode": "e905b92535d6f89e",
+        "name": "find all",
+        "collection": "person",
+        "operation": "findOne",
+        "x": 570,
+        "y": 640,
+        "wires": [
+            [
+                "2a75443f4d74ed05",
+                "c7467ad0754e1c5d"
+            ]
+        ]
+    },
+    {
+        "id": "b288189398cfdd46",
+        "type": "function",
+        "z": "8c75a5205b53450b",
+        "name": "function 14",
+        "func": "; // Assuming you've set ObjectID globally\nmsg.payload = [{ email: msg.req.params.email}]\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 640,
+        "wires": [
+            [
+                "3b1f0316a6a3f92a"
+            ]
+        ]
+    },
+    {
+        "id": "86d0cc787c1a5189",
+        "type": "comment",
+        "z": "8c75a5205b53450b",
+        "name": "GET BY PARAMS",
+        "info": "",
+        "x": 150,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "60b16b13616e9f07",
+        "type": "comment",
+        "z": "8c75a5205b53450b",
+        "name": "GET BY QUERY",
+        "info": "",
+        "x": 140,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "f255a89271892ae5",
+        "type": "debug",
+        "z": "8c75a5205b53450b",
+        "name": "debug 123",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "e905b92535d6f89e",
+        "type": "mongodb3",
+        "uri": "mongodb+srv://ashishkumarpalai1:GlDjV82QdEYW8kCH@cluster0.boj4g3a.mongodb.net/task3?retryWrites=true&w=majority&appName=Cluster0",
+        "name": "",
+        "options": "",
+        "parallelism": "-1"
+    }
+]

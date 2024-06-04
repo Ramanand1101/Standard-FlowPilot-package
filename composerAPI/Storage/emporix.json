@@ -1,0 +1,56 @@
+[
+    {
+        "id": "d52f4288d899cdec",
+        "type": "tab",
+        "label": "Emporix",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7ae1c8ffd365405d",
+        "type": "inject",
+        "z": "d52f4288d899cdec",
+        "name": "Emporix",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "hello from Emporix",
+        "payloadType": "str",
+        "x": 324.1692810058594,
+        "y": 221.1666717529297,
+        "wires": [
+            [
+                "c08f842a6bb9d510"
+            ]
+        ]
+    },
+    {
+        "id": "c08f842a6bb9d510",
+        "type": "debug",
+        "z": "d52f4288d899cdec",
+        "name": "debug 265",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 617.2804260253906,
+        "y": 263.1666717529297,
+        "wires": []
+    }
+]

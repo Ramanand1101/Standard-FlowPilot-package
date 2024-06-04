@@ -1,0 +1,56 @@
+[
+    {
+        "id": "3481dc23b3f0bbb3",
+        "type": "tab",
+        "label": " Algolia",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "280bd059fd37aff4",
+        "type": "inject",
+        "z": "3481dc23b3f0bbb3",
+        "name": "Algolia",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "hello from Algolia",
+        "payloadType": "str",
+        "x": 229.16928100585938,
+        "y": 276.1666564941406,
+        "wires": [
+            [
+                "4eb1cedf6dda4c81"
+            ]
+        ]
+    },
+    {
+        "id": "4eb1cedf6dda4c81",
+        "type": "debug",
+        "z": "3481dc23b3f0bbb3",
+        "name": "debug 266",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 532.2804260253906,
+        "y": 318.1666564941406,
+        "wires": []
+    }
+]
